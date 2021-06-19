@@ -1,3 +1,6 @@
+var startButton = document.querySelector("#start");
+startButton.addEventListener("click", loadQuestion);
+
 var questions = {
     1: {
         question: "What is ...?",
@@ -22,10 +25,6 @@ var questions = {
 };
 
 var currentQuestion = 0;
-
-var startButton = document.querySelector("#start");
-
-startButton.addEventListener("click", loadQuestion);
 
 function loadQuestion() {
     var questionSelection = questions[currentQuestion++];
