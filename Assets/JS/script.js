@@ -1,6 +1,8 @@
+//start button functionality
 var startButton = document.querySelector("#start");
 startButton.addEventListener("click", init);
 
+//variable for the questions and answers
 var questions = {
     1: {
         question: "What is ...?",
@@ -24,14 +26,16 @@ var questions = {
     }
 };
 
+//calling the questions
 var currentQuestion = 0;
-
+//changing the hidden visibility on the element to switch to the questions
 function init() {
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("question-content").classList.remove("hidden");
     loadQuestion();
 }
 
+//formula to cycle through the questions
 function loadQuestion() {
     var questionSelection = questions[currentQuestion++];
 
@@ -48,3 +52,13 @@ function loadQuestion() {
     }
 
 }
+
+//formula to keep track of score
+
+//timer function - must subtract when the answer is wrong
+
+//ask for initials and show score
+
+//show list of scores
+
+//use local storage to keep and pull high scores
