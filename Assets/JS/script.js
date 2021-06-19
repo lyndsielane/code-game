@@ -1,5 +1,5 @@
 var startButton = document.querySelector("#start");
-startButton.addEventListener("click", loadQuestion);
+startButton.addEventListener("click", init);
 
 var questions = {
     1: {
@@ -25,6 +25,12 @@ var questions = {
 };
 
 var currentQuestion = 0;
+
+function init() {
+    document.getElementById("intro").classList.add("hidden");
+    document.getElementById("question-content").classList.remove("hidden");
+    loadQuestion();
+}
 
 function loadQuestion() {
     var questionSelection = questions[currentQuestion++];
