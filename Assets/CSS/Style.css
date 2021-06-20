@@ -9,6 +9,10 @@ header {
     margin: 10px;
 }
 
+button:hover, #answers li {
+    cursor: pointer;
+}
+
 #intro {
     text-align: center;
     margin: auto;
@@ -17,8 +21,14 @@ header {
 
 #start {
     margin: 20px auto;
-    font-size: 20px;
-    background-color: cornflowerblue;
+    font-size: 25px;
+    background-color: cadetblue;
+}
+
+#replay {
+    margin: 20px auto;
+    font-size: 25px;
+    background-color: cadetblue;
 }
 
 #question-content {
@@ -44,5 +54,11 @@ header {
 .hidden {
     visibility: hidden;
     display: none;
+}
+
+#results {
+    text-align: center;
+    font-size: 25px;
+    margin: auto;
 }
 
