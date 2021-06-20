@@ -1,43 +1,24 @@
-//start button functionality
-var startButton = document.querySelector("#start");
-startButton.addEventListener("click", init);
-
-//variable for the questions
-var questions = [
-    {
-        question: "What is JavaScript?",
-        answers: {
-            "A": "A document system",
-            "B": "A computer game",
-            "C": "A programming language",
-            "D": "An animal from the Amazon"
-        },
-        correctAnswer: "C",
-    },
-
-    {
-        question: "What is the purpose of CSS?",
-        answers: {
-            "A": "To sound confusing",
-            "B": "To style a webpage",
-            "C": "To add color to a document",
-            "D": "To color something special"
-        },
-        correctAnswer: "B",
-    },
-
-];
-//calling the questions
 var currentQuestion = 0;
 
-//changing the hidden visibility on the element to switch to the questions
 function init() {
+    //buttons for event listeners
+    var startButton = document.querySelector("#start");
+    var replayButton = document.querySelector("#replay");
+
+    // set up event listeners
+    startButton.addEventListener("click", startGame);
+    replayButton.addEventListener("click", startGame);
+}
+
+//changing the hidden visibility on the element to switch to the questions
+function startGame() {
     currentQuestion = 0;
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("question-content").classList.remove("hidden");
     document.getElementById("results").classList.add("hidden");
     loadNextQuestion();
 }
+
 //formula to cycle through the questions
 function loadNextQuestion() {
     var answers = document.getElementById("answers");
@@ -59,6 +40,7 @@ function loadNextQuestion() {
         answers.appendChild(answer);
     }
 }
+
 //checking the answer choices
 function answerCheck(event){
     var questionSelection = questions[currentQuestion];
@@ -71,14 +53,14 @@ function answerCheck(event){
     currentQuestion++;
 
     if (questions.length === currentQuestion) {
-        stop();
+        stopGame();
         return;
     }
 
     loadNextQuestion();
 }
 
-function stop() {
+function stopGame() {
     //hide question
     document.getElementById("question-content").classList.add("hidden");
     document.getElementById("results").classList.remove("hidden");
@@ -87,8 +69,6 @@ function stop() {
 
 //timer function - must subtract when the answer is wrong
 
-//reload button
-var replayButton = document.querySelector("#replay");
-replayButton.addEventListener("click", init);
-
 //use local storage to keep and pull high scores upon reload 
+
+init();

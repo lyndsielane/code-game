@@ -1,5 +1,5 @@
 body {
-    background-color: #e4f7f2;
+    background-color:  #dff7f0;
 }
 
 header {
@@ -41,14 +41,16 @@ button:hover, #answers li {
 #question {
     font-weight: bold;
     font-size: 28px;
+    color: #4a947e;
 }
 
 #answers li {
-    border: 1px solid #e7e7e7;
-    background-color: #e7e7e7;
+    border: 1px solid #4a947e;
+    background-color: #97c2b6;
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 5px;
+    color: #434a48;
 }
 
 .hidden {
