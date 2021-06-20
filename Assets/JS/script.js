@@ -1,4 +1,7 @@
 var currentQuestion = 0;
+var gameTimerEl = document.getElementById("timer");
+var gameTimer;
+var timeLeft = 60;
 
 function init() {
     //buttons for event listeners
@@ -13,9 +16,12 @@ function init() {
 //changing the hidden visibility on the element to switch to the questions
 function startGame() {
     currentQuestion = 0;
+    timeLeft = 60;
+    document.getElementById("timer").innerHTML = timeLeft;
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("question-content").classList.remove("hidden");
     document.getElementById("results").classList.add("hidden");
+    startTimer();
     loadNextQuestion();
 }
 
@@ -54,6 +60,8 @@ function answerCheck(event){
         document.getElementById("response").innerHTML = "Correct";
     } else {
         document.getElementById("response").innerHTML = "Wrong";
+        timeLeft -= 12;
+        document.getElementById("timer").innerHTML = timeLeft;
     }
 
     currentQuestion++;
@@ -72,6 +80,8 @@ function answerCheck(event){
     
 
 function stopGame() {
+    clearInterval(gameTimer);
+
     //hide question
     document.getElementById("question-content").classList.add("hidden");
     document.getElementById("results").classList.remove("hidden");
@@ -79,7 +89,13 @@ function stopGame() {
 }
 
 //timer function - must subtract when the answer is wrong
-
+function startTimer() {
+    gameTimer = setInterval(function() {
+        console.log(timeLeft);
+        timeLeft--;
+        gameTimerEl.innerHTML = timeLeft;
+    }, 1000);
+}
 //use local storage to keep and pull high scores upon reload 
 
 init();
