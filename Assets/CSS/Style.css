@@ -44,13 +44,22 @@ button:hover, #answers li {
     color: #4a947e;
 }
 
+#answers {
+    padding: 0;
+}
+
 #answers li {
     border: 1px solid #4a947e;
     background-color: #97c2b6;
     border-radius: 10px;
-    margin-bottom: 10px;
     padding: 5px;
     color: #434a48;
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+#answers li:hover {
+    opacity: 80%;
 }
 
 .hidden {

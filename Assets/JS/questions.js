@@ -27,20 +27,20 @@ var questions = [
             "A": "To sew new clothes",
             "B": "To hold table information",
             "C": "To make buttons clickable",
-            "D": "To hold multiple pieces of information"
+            "D": "To hold a series of characters"
         },
         correctAnswer: "D",
     },
 
     {
-        question: "What is the proper way to declare a HTML document?",
+        question: "What is the proper way to declare an HTML document?",
         answers: {
             "A": "This is HTML",
             "B": "HTML",
             "C": "!DOCTYPE HTML",
             "D": "HTML below"
         },
-        correctAnswer: "c",
+        correctAnswer: "C",
     },
 
     {

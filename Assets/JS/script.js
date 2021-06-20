@@ -21,6 +21,8 @@ function startGame() {
 
 //formula to cycle through the questions
 function loadNextQuestion() {
+    document.getElementById("response").innerHTML = '';
+
     var answers = document.getElementById("answers");
 
     answers.innerHTML = '';
@@ -45,20 +47,29 @@ function loadNextQuestion() {
 function answerCheck(event){
     var questionSelection = questions[currentQuestion];
     var isCorrect = event.target.id === questionSelection.correctAnswer;
-
     //do some stuff to the timer
 
     //tell them if it is correct or wrong
+    if (isCorrect) {
+        document.getElementById("response").innerHTML = "Correct";
+    } else {
+        document.getElementById("response").innerHTML = "Wrong";
+    }
 
     currentQuestion++;
 
     if (questions.length === currentQuestion) {
-        stopGame();
+        setTimeout(function() {
+            stopGame();
+        }, 1000);
         return;
     }
 
-    loadNextQuestion();
+    setTimeout(function() {
+        loadNextQuestion();
+    }, 1000);
 }
+    
 
 function stopGame() {
     //hide question

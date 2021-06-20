@@ -24,22 +24,28 @@
         <div id="question-content" class="hidden">
             <div id="question"></div>
             <ul id="answers"></ul>
+            <div id="response"></div>
+        </div>
+
         </div>
 
         <!--results-->
         <div id="results" class="hidden">
-          <p>here are my results</p>
-          <table id="scorelist" class="hidden">
-              <tr>
-                  <th>Initials</th>
-                  <th>Score</th>
-              </tr>
-              <tr>
-                  <td></td>
-                  <td></td>
-              </tr>
-          </table>
-          <button id="replay">Play Again</button>
+          <div id="myResults">
+              <span>All Done!</span>
+              <span id="myScore"></span>
+              <input type="text" id="myInitials" placeholder="ABC" />
+              <button id="submitInitials">Submit</button>
+          </div>
+          <div id="highScores" class="hidden">
+            <table id="scorelist">
+                <tr>
+                    <th>Initials</th>
+                    <th>Score</th>
+                </tr>
+            </table>
+            <button id="replay">Play Again</button>
+          </div>
         </div>
         
         <script src="./Assets/JS/questions.js"></script>
