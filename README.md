@@ -1,1 +1,2 @@
-# code-game
+## Lyndsie's Code Game
+

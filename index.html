@@ -10,13 +10,14 @@
     <!--header with highscore and timer - the high score needs to be a link to the highscore list-->
     <body>
         <header>
-            <p id="highscores">View Highscores </p>
-            <p id="timer"></p>
+            <p id="viewhighscores">View Highscores </p>
+            <p>Time: <span id="timer">60</span></p>
         </header>
         
         <!--starter text and start button when the page loads-->
         <div id="intro">
-            <p>Here is the quiz.</p>
+            <h3>Here is the quiz.</h3>
+            <p>Quiz Instructions</p>
             <button id="start">Start</button>
         </div>
         
@@ -27,17 +28,15 @@
             <div id="response"></div>
         </div>
 
-        </div>
-
         <!--results-->
         <div id="results" class="hidden">
-          <div id="myResults">
-              <span>All Done!</span>
-              <span id="myScore"></span>
-              <input type="text" id="myInitials" placeholder="ABC" />
-              <button id="submitInitials">Submit</button>
-          </div>
-          <div id="highScores" class="hidden">
+            <span id="Done">All Done!</span>
+            <span id="myScore"></span>
+            <input type="text" id="myInitials" placeholder="Enter Initials" />
+            <button id="submitInitials">Submit</button>
+        </div>
+
+        <div id="highScores" class="hidden">
             <table id="scorelist">
                 <tr>
                     <th>Initials</th>
@@ -45,7 +44,6 @@
                 </tr>
             </table>
             <button id="replay">Play Again</button>
-          </div>
         </div>
         
         <script src="./Assets/JS/questions.js"></script>

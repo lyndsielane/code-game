@@ -2,15 +2,20 @@ var currentQuestion = 0;
 var gameTimerEl = document.getElementById("timer");
 var gameTimer;
 var timeLeft = 60;
+var localStorageName = "gameHighScores";
 
 function init() {
     //buttons for event listeners
     var startButton = document.querySelector("#start");
+    var submitButton = document.getElementById("submitInitials");
     var replayButton = document.querySelector("#replay");
+    var highScores = document.querySelector("#highscores");
 
     // set up event listeners
     startButton.addEventListener("click", startGame);
+    submitButton.addEventListener("click", saveNewScore);
     replayButton.addEventListener("click", startGame);
+    highScores.addEventListener("click", showHighScores);
 }
 
 //changing the hidden visibility on the element to switch to the questions
@@ -82,20 +87,50 @@ function answerCheck(event){
 function stopGame() {
     clearInterval(gameTimer);
 
-    //hide question
+    if (timeLeft < 0) {
+        timeLeft = 0;
+        gameTimerEl.innerHTML = timeLeft;
+    }
+
+    //hides question
     document.getElementById("question-content").classList.add("hidden");
     document.getElementById("results").classList.remove("hidden");
-    //ask for initials and display scores
+    //displays scores & asks for initials
+    document.getElementById("myScore").innerHTML = ("Your Score: " + timeLeft);
+
+
 }
 
 //timer function - must subtract when the answer is wrong
 function startTimer() {
     gameTimer = setInterval(function() {
-        console.log(timeLeft);
         timeLeft--;
         gameTimerEl.innerHTML = timeLeft;
+
+        if(timeLeft <= 0) {
+            clearInterval(gameTimer);
+            stopGame();
+        }
     }, 1000);
 }
-//use local storage to keep and pull high scores upon reload 
+
+function saveNewScore() {
+    var initials = document.getElementById("myInitials").value;
+    var highScores = JSON.parse(localStorage.getItem(localStorageName)) || { scores: [] };
+
+    highScores.scores.push({
+        initials: initials,
+        score: timeLeft
+    });
+
+    localStorage.setItem(localStorageName, JSON.stringify(highScores));
+
+    showHighScores();
+}
+
+function showHighScores() {
+    
+
+}
 
 init();
