@@ -26,6 +26,7 @@ function startGame() {
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("question-content").classList.remove("hidden");
     document.getElementById("results").classList.add("hidden");
+    document.getElementById("myInitials").value = "";
     document.getElementById("highScores").classList.add("hidden");
     startTimer();
     loadNextQuestion();
@@ -116,6 +117,12 @@ function startTimer() {
 //saving scores to local storage
 function saveNewScore() {
     var initials = document.getElementById("myInitials").value;
+    
+    if (initials === "") {
+        alert("Your initials are required.");
+        return;
+    }
+
     var highScores = JSON.parse(localStorage.getItem(localStorageName)) || { scores: [] };
 
     highScores.scores.push({
@@ -123,7 +130,6 @@ function saveNewScore() {
         score: timeLeft
     });
 
-    //TODO: pull only top 10 scores & sort from highest to lowest (splice)
     highScores.scores.sort((score1, score2) => {
         if (score1.score < score2.score) {
            return 1; 
@@ -138,11 +144,11 @@ function saveNewScore() {
 
     var maxScores = 10;
 
-    if (highScores.scores.length < 10) {
+    if (highScores.scores.length < maxScores) {
         maxScores = highScores.scores.length;
     }
     
-    highScores.scores = highScores.scores.splice(0, maxScores);
+    highScores.scores = highScores.scores.slice(0, maxScores);
 
     localStorage.setItem(localStorageName, JSON.stringify(highScores));
     showHighScores();
@@ -154,6 +160,8 @@ function showHighScores() {
     document.getElementById("highScores").classList.remove("hidden");
 
     var scoreListTbl = document.querySelector("#scoreList tbody");
+
+    scoreListTbl.innerHTML = "";
 
     var highScores = JSON.parse(localStorage.getItem(localStorageName));
     
