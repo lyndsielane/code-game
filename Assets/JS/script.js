@@ -97,8 +97,8 @@ function stopGame() {
     document.getElementById("results").classList.remove("hidden");
     //displays scores & asks for initials
     document.getElementById("myScore").innerHTML = ("Your Score: " + timeLeft);
-
-
+    //TODO: clear initials for next game
+    //TODO: prevent saving score if no initials are entered
 }
 
 //sets timer
@@ -124,9 +124,27 @@ function saveNewScore() {
     });
 
     //TODO: pull only top 10 scores & sort from highest to lowest (splice)
+    highScores.scores.sort((score1, score2) => {
+        if (score1.score < score2.score) {
+           return 1; 
+        }
+
+        if (score1.score > score2.score) {
+            return -1;
+        }
+
+        return 0;
+    });
+
+    var maxScores = 10;
+
+    if (highScores.scores.length < 10) {
+        maxScores = highScores.scores.length;
+    }
+    
+    highScores.scores = highScores.scores.splice(0, maxScores);
 
     localStorage.setItem(localStorageName, JSON.stringify(highScores));
-
     showHighScores();
 }
 //displays scores to the high score table 

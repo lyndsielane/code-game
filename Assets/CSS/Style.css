@@ -85,3 +85,7 @@ button:hover, #answers li {
     text-align: center;
     font-size: 25px;
 }
+
+#viewHighScores:hover {
+    cursor: pointer;
+}
