@@ -14,6 +14,10 @@ button:hover, #answers li {
     cursor: pointer;
 }
 
+#viewHighScores:hover {
+    cursor: pointer;
+}
+
 #intro {
     text-align: center;
     margin: auto;
@@ -30,12 +34,6 @@ button:hover, #answers li {
     margin: 20px auto;
     font-size: 25px;
     background-color: darkgray;
-}
-
-#replay {
-    margin: 20px auto;
-    font-size: 25px;
-    background-color: darkgray
 }
 
 #question-content {
@@ -72,11 +70,6 @@ button:hover, #answers li {
     opacity: 80%;
 }
 
-.hidden {
-    visibility: hidden;
-    display: none;
-}
-
 #results {
     display: flex;
     flex-direction: column;
@@ -93,6 +86,13 @@ button:hover, #answers li {
     font-size: 25px;
 }
 
-#viewHighScores:hover {
-    cursor: pointer;
+#replay {
+    margin: 20px auto;
+    font-size: 25px;
+    background-color: darkgray
+}
+
+.hidden {
+    visibility: hidden;
+    display: none;
 }

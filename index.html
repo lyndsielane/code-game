@@ -7,28 +7,25 @@
         <link rel="stylesheet" href="./Assets/CSS/reset.css"/>
         <link rel="stylesheet" href="./Assets/CSS/Style.css"/>
     </head>
-    <!--header with highscore and timer - the high score needs to be a link to the highscore list-->
+    
     <body>
         <header>
             <a id="viewHighScores">View Highscores </a>
             <p>Time: <span id="timer">60</span></p>
         </header>
         
-        <!--starter text and start button when the page loads-->
         <div id="intro">
             <h3>Coding Quiz</h3>
             <p>Take a shot at answering multiple-choice coding questions before time runs out! Incorrect answers deduct 12 seconds from your time! The score is based on the remaining time upon completion. Check your highscores and keep playing to beat them!</p>
             <button id="start">Start</button>
         </div>
-        
-        <!--question box (hidden upon initial loading)-->
+       
         <div id="question-content" class="hidden">
             <div id="question"></div>
             <ul id="answers"></ul>
             <div id="response"></div>
         </div>
 
-        <!--results-->
         <div id="results" class="hidden">
             <span id="Done">All Done!</span>
             <span id="myScore"></span>

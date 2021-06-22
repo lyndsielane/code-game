@@ -48,7 +48,6 @@ function loadNextQuestion() {
         var answerText = questionSelection.answers[letter];
         var answer = document.createElement("li");
 
-        // <li id="A" value="A">A document system</li>
         answer.id = letter;
         answer.innerHTML = answerText;
         answer.addEventListener("click", answerCheck);
@@ -98,8 +97,6 @@ function stopGame() {
     document.getElementById("results").classList.remove("hidden");
     //displays scores & asks for initials
     document.getElementById("myScore").innerHTML = ("Your Score: " + timeLeft);
-    //TODO: clear initials for next game
-    //TODO: prevent saving score if no initials are entered
 }
 
 //sets timer
@@ -177,7 +174,6 @@ function showHighScores() {
         row.appendChild(scoreTd);
         scoreListTbl.appendChild(row);
     });
-
 }
 
 init();
