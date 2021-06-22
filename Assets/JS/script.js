@@ -26,6 +26,7 @@ function startGame() {
     document.getElementById("intro").classList.add("hidden");
     document.getElementById("question-content").classList.remove("hidden");
     document.getElementById("results").classList.add("hidden");
+    document.getElementById("highScores").classList.add("hidden");
     startTimer();
     loadNextQuestion();
 }
@@ -58,9 +59,8 @@ function loadNextQuestion() {
 function answerCheck(event){
     var questionSelection = questions[currentQuestion];
     var isCorrect = event.target.id === questionSelection.correctAnswer;
-    //do some stuff to the timer
 
-    //tell them if it is correct or wrong
+    //advise user of answer accuracy
     if (isCorrect) {
         document.getElementById("response").innerHTML = "Correct";
     } else {
@@ -70,7 +70,7 @@ function answerCheck(event){
     }
 
     currentQuestion++;
-
+    //sets the game to stop when no questions remain
     if (questions.length === currentQuestion) {
         setTimeout(function() {
             stopGame();
@@ -83,16 +83,16 @@ function answerCheck(event){
     }, 1000);
 }
     
-
+//stop game instructions 
 function stopGame() {
     clearInterval(gameTimer);
-
+    //stops game when time runs out
     if (timeLeft < 0) {
         timeLeft = 0;
         gameTimerEl.innerHTML = timeLeft;
     }
 
-    //hides question
+    //hides question/answer 
     document.getElementById("question-content").classList.add("hidden");
     document.getElementById("results").classList.remove("hidden");
     //displays scores & asks for initials
@@ -101,7 +101,7 @@ function stopGame() {
 
 }
 
-//timer function - must subtract when the answer is wrong
+//sets timer
 function startTimer() {
     gameTimer = setInterval(function() {
         timeLeft--;
@@ -113,7 +113,7 @@ function startTimer() {
         }
     }, 1000);
 }
-
+//saving scores to local storage
 function saveNewScore() {
     var initials = document.getElementById("myInitials").value;
     var highScores = JSON.parse(localStorage.getItem(localStorageName)) || { scores: [] };
@@ -123,19 +123,34 @@ function saveNewScore() {
         score: timeLeft
     });
 
+    //TODO: pull only top 10 scores & sort from highest to lowest (splice)
+
     localStorage.setItem(localStorageName, JSON.stringify(highScores));
 
     showHighScores();
 }
-
+//displays scores to the high score table 
 function showHighScores() {
+    document.getElementById("intro").classList.add("hidden");
     document.getElementById("results").classList.add("hidden");
     document.getElementById("highScores").classList.remove("hidden");
 
-    var highScoresEl = document.getElementById("highScores");
+    var scoreListTbl = document.querySelector("#scoreList tbody");
 
     var highScores = JSON.parse(localStorage.getItem(localStorageName));
     
+    highScores.scores.forEach(element => {
+        var row = document.createElement("tr");
+        var initialsTd = document.createElement("td");
+        var scoreTd = document.createElement("td");
+
+        initialsTd.innerHTML = element.initials;
+        scoreTd.innerHTML = element.score;
+
+        row.appendChild(initialsTd);
+        row.appendChild(scoreTd);
+        scoreListTbl.appendChild(row);
+    });
 
 }
 
