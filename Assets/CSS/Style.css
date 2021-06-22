@@ -1,5 +1,6 @@
 body {
-    background-color:  #dff7f0;
+    background-image: url("../Photos/1992547.jpg");
+    background-size: cover;
 }
 
 header {
@@ -17,18 +18,24 @@ button:hover, #answers li {
     text-align: center;
     margin: auto;
     font-size: 28px;
+    width: 60%;
+}
+
+#intro h3 {
+    border-bottom: 5px solid black;
+    padding-bottom: 10px;
 }
 
 #start {
     margin: 20px auto;
     font-size: 25px;
-    background-color: cadetblue;
+    background-color: darkgray;
 }
 
 #replay {
     margin: 20px auto;
     font-size: 25px;
-    background-color: cadetblue;
+    background-color: darkgray
 }
 
 #question-content {
@@ -40,7 +47,7 @@ button:hover, #answers li {
 #question {
     font-weight: bold;
     font-size: 28px;
-    color: #4a947e;
+    color: black;
     margin-bottom: 20px;
 }
 
@@ -50,11 +57,11 @@ button:hover, #answers li {
 }
 
 #answers li {
-    border: 1px solid #4a947e;
-    background-color: #97c2b6;
+    border: 1px solid grey;
+    background-color: lightgrey;
     border-radius: 10px;
     padding: 5px;
-    color: #434a48;
+    color: black;
     list-style: none;
     margin-bottom: 10px;
     width: 300px;
