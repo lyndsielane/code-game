@@ -9,13 +9,13 @@ function init() {
     var startButton = document.querySelector("#start");
     var submitButton = document.getElementById("submitInitials");
     var replayButton = document.querySelector("#replay");
-    var highScores = document.querySelector("#highscores");
+    var viewHighScores = document.querySelector("#viewHighScores");
 
     // set up event listeners
     startButton.addEventListener("click", startGame);
     submitButton.addEventListener("click", saveNewScore);
     replayButton.addEventListener("click", startGame);
-    highScores.addEventListener("click", showHighScores);
+    viewHighScores.addEventListener("click", showHighScores);
 }
 
 //changing the hidden visibility on the element to switch to the questions
@@ -129,6 +129,12 @@ function saveNewScore() {
 }
 
 function showHighScores() {
+    document.getElementById("results").classList.add("hidden");
+    document.getElementById("highScores").classList.remove("hidden");
+
+    var highScoresEl = document.getElementById("highScores");
+
+    var highScores = JSON.parse(localStorage.getItem(localStorageName));
     
 
 }

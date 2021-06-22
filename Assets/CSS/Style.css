@@ -78,3 +78,10 @@ button:hover, #answers li {
     font-size: 25px;
 }
 
+#highScores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+}
